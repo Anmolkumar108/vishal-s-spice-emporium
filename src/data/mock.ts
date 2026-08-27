@@ -25,6 +25,19 @@ export type Product = {
 
 const img = (n: string) => `/images/${n}.jpg`;
 
+const productImagePool: Record<string, string[]> = {
+  Pickles: ["product-pickle-a", "product-pickle-b", "product-pickle-c"],
+  Masalas: ["product-masala-a", "product-masala-b"],
+  "Instant Mixes": ["product-mix-a", "product-mix-b"],
+  "Combo Packs": ["product-combo-a"],
+  "Wholesale Packs": ["product-wholesale-a"],
+};
+
+const productImage = (category: string, i: number) => {
+  const pool = productImagePool[category] ?? productImagePool["Pickles"]!;
+  return img(pool[i % pool.length]!);
+};
+
 export const categories = [
   {
     id: "c1",
@@ -612,7 +625,7 @@ export const products: Product[] = seeds.map((s, i) => {
     stock,
     featured,
     bestSeller,
-    slug,
+    _slug,
   ] = s;
   return {
     id: `VP${String(i + 101)}`,
@@ -628,8 +641,13 @@ export const products: Product[] = seeds.map((s, i) => {
     unit,
     rating,
     reviewCount,
-    image: img(slug),
-    gallery: [img(slug), img("scene-jars"), img("scene-kitchen"), img("scene-spices")],
+    image: productImage(category, i),
+    gallery: [
+      productImage(category, i),
+      img("scene-jars"),
+      img("scene-kitchen"),
+      img("scene-spices"),
+    ],
     badge,
     stock,
     featured,
