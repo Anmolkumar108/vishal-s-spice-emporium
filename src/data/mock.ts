@@ -25,6 +25,19 @@ export type Product = {
 
 const img = (n: string) => `/images/${n}.jpg`;
 
+const productImagePool: Record<string, string[]> = {
+  Pickles: ["product-pickle-a", "product-pickle-b", "product-pickle-c"],
+  Masalas: ["product-masala-a", "product-masala-b"],
+  "Instant Mixes": ["product-mix-a", "product-mix-b"],
+  "Combo Packs": ["product-combo-a"],
+  "Wholesale Packs": ["product-wholesale-a"],
+};
+
+const productImage = (category: string, i: number) => {
+  const pool = productImagePool[category] ?? productImagePool["Pickles"]!;
+  return img(pool[i % pool.length]!);
+};
+
 export const categories = [
   {
     id: "c1",
