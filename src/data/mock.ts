@@ -625,7 +625,7 @@ export const products: Product[] = seeds.map((s, i) => {
     stock,
     featured,
     bestSeller,
-    slug,
+    _slug,
   ] = s;
   return {
     id: `VP${String(i + 101)}`,
