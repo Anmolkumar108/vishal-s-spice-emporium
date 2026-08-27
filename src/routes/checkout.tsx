@@ -182,8 +182,8 @@ function Field({
   name: string;
   value: string;
   onChange: (k: string, v: string) => void;
-  error?: string;
-  textarea?: boolean;
+  error?: string | undefined;
+  textarea?: boolean | undefined;
 }) {
   return (
     <div>

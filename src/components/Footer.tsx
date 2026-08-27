@@ -85,9 +85,9 @@ export function Footer() {
             <a href={settings.facebook} className="hover:text-accent">
               Facebook
             </a>
-            <Link to="/admin" className="text-cream/45 underline-offset-2 hover:text-accent hover:underline">
+            <a href="/admin" className="text-cream/45 underline-offset-2 hover:text-accent hover:underline">
               Admin Login
-            </Link>
+            </a>
           </div>
         </div>
       </div>
